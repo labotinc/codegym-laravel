@@ -5,6 +5,11 @@ services:
       context: ./docker/app
       args:
         DOCKER_UID: ${DOCKER_UID:-1000}
+    environment:
+      MYSQL_DATABASE: c9
+      #MYSQL_USER: MYSQL_USER
+      #MYSQL_PASSWORD: MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./html:/var/www/html
     ports:
@@ -13,6 +18,8 @@ services:
     build: ./docker/db
     environment:
       MYSQL_DATABASE: c9
+      #MYSQL_USER: MYSQL_USER
+      #MYSQL_PASSWORD: MYSQL_PASSWORD
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       TZ: Asia/Tokyo
     volumes:
